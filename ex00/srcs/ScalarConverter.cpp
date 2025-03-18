@@ -156,7 +156,6 @@ void printInt(const std::string &str)
 void printFloat(const std::string &str)
 {
 	float f = atof(str.c_str());
-	std::string decimal;
 	
 	if (isprint(int(f)))
 		std::cout << "Char: " << static_cast<char>(f) << std::endl;
@@ -176,7 +175,7 @@ void printDouble(const std::string &str)
 	else
 		std::cout << "Char: " << "Non displayable" << std::endl;
 	std::cout << "Int: " << static_cast<int>(d) << std::endl;
-	std::cout << "Float: " << static_cast<float>(d) << std::endl;
+	std::cout << "Float: " << static_cast<float>(d) << "f" << std::endl;
 	std::cout << "Double: " << d << std::endl;
 }
 

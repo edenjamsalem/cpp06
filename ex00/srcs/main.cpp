@@ -29,12 +29,17 @@ int main(int argc, char **argv)
     std::cout << std::endl;
     ScalarConverter::convert("-123");
     std::cout << std::endl;
+    
+    std::cout << "(double)\n" << std::endl;
     ScalarConverter::convert("123.123");
     std::cout << std::endl;
+    std::cout << "(double)\n" << std::endl;
     ScalarConverter::convert("-123.123");
     std::cout << std::endl;
+    std::cout << "(float)\n" << std::endl;
     ScalarConverter::convert("123.123f");
     std::cout << std::endl;
+    std::cout << "(float)\n" << std::endl;
     ScalarConverter::convert("-123.123f");
     std::cout << std::endl;
 
