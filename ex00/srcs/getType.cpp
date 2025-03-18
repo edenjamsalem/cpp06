@@ -21,7 +21,7 @@ bool	isSpecial(const std::string &str)
 
 bool isChar(const std::string &str)
 {
-	if (str.length() != 1 || !isalpha(str[0]))
+	if (str.length() != 1 || !isprint(str[0]))
 		return (false);
 	return (true);
 }

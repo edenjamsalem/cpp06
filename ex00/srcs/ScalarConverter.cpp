@@ -40,6 +40,4 @@ void ScalarConverter::convert(const std::string &str)
 			printDouble(str);
 			break ;
 	}
-
-	//std::cout << type << std::endl;
 }
