@@ -7,13 +7,13 @@ int main(int argc, char **argv)
         std::cerr << "Please input a single c++ scalar value.\n";
         return (1);
     }
-    ScalarConverter::convert("inf");
+    ScalarConverter::convert("+inf");
     std::cout << std::endl;
     ScalarConverter::convert("-inf");
     std::cout << std::endl;
     ScalarConverter::convert("-inff");
     std::cout << std::endl;
-    ScalarConverter::convert("inff");
+    ScalarConverter::convert("+inff");
     std::cout << std::endl;
     ScalarConverter::convert("a");
     std::cout << std::endl;

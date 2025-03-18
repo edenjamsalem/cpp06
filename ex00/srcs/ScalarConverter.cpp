@@ -156,31 +156,28 @@ void printInt(const std::string &str)
 void printFloat(const std::string &str)
 {
 	float f = atof(str.c_str());
-
+	std::string decimal;
+	
 	if (isprint(int(f)))
-		printOutput(static_cast<char>(f), static_cast<int>(f), static_cast<float>(f), static_cast<double>(f));
+		std::cout << "Char: " << static_cast<char>(f) << std::endl;
 	else
-	{
 		std::cout << "Char: " << "Non displayable" << std::endl;
-		std::cout << "Int: " << static_cast<int>(f) << std::endl;
-		std::cout << "Float: " << f << decimal << "f" << std::endl;
-		std::cout << "Double: " << static_cast<double>(f) << ".0" << std::endl;
-	}
+	std::cout << "Int: " << static_cast<int>(f) << std::endl;
+	std::cout << "Float: " << f << "f" << std::endl;
+	std::cout << "Double: " << static_cast<double>(f) << std::endl;
 }
 
 void printDouble(const std::string &str)
 {
-	double f = atof(str.c_str());
+	double d = atof(str.c_str());
 	
-	if (isprint(int(f)))
-		printOutput(static_cast<char>(f), static_cast<int>(f), static_cast<float>(f), static_cast<double>(f));
+	if (isprint(int(d)))
+		std::cout << "Char: " << static_cast<char>(d) << std::endl;
 	else
-	{
 		std::cout << "Char: " << "Non displayable" << std::endl;
-		std::cout << "Int: " << static_cast<int>(f) << std::endl;
-		std::cout << "Float: " << static_cast<float>(f) << std::endl;
-		std::cout << "Double: " << f << std::endl;
-	}
+	std::cout << "Int: " << static_cast<int>(d) << std::endl;
+	std::cout << "Float: " << static_cast<float>(d) << std::endl;
+	std::cout << "Double: " << d << std::endl;
 }
 
 void ScalarConverter::convert(const std::string &str)
