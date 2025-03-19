@@ -13,6 +13,7 @@ int main()
 	std::cout << "ID: " << eden->ID << std::endl;
 	std::cout << "Name: " << eden->name << std::endl;
 	std::cout << "Occupation: " << eden->occupation << std::endl;
+	std::cout << "Address: " << &eden << std::endl;
 
 	ptr = Serializer::serialize(eden);
 	eden  = Serializer::deserialize(ptr);
@@ -20,6 +21,7 @@ int main()
 	std::cout << "ID: " << eden->ID << std::endl;
 	std::cout << "Name: " << eden->name << std::endl;
 	std::cout << "Occupation: " << eden->occupation << std::endl;
+	std::cout << "Address: " << &eden << std::endl;
 
 	delete eden;
 }
