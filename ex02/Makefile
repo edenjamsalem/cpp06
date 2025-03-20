@@ -1,61 +1,33 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/06/17 14:04:43 by eamsalem          #+#    #+#              #
-#    Updated: 2025/03/19 14:51:42 by eamsalem         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-NAME =	Base	
-
-INCLUDES = ./includes
-SRC_DIR = ./srcs
-OBJ_DIR = ./bin
+NAME = Base
 
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -g3 -std=c++98 
+CPPFLAGS = -Wall -Werror -Wextra -g3 -std=c++98
 
-RED = \033[0;31m
-GREEN = \033[0;32m
-YELLOW = \033[0;33m
-NC = \033[0m
+SRCDIR = ./srcs
+SRCS =	$(SRCDIR)/main.cpp \
+		$(SRCDIR)/Base.cpp
 
-SRCS = $(shell find $(SRC_DIR) -name '*.cpp') #! Remember to explicity define src
-OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJDIR = ./build
+OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
-all: $(NAME) $(OBJ_DIR)
+all: $(OBJDIR) $(NAME)
 
-$(OBJ_DIR):
-	@echo "${YELLOW}Creating object directory $(OBJ_DIR)...${NC}"
-	@mkdir -p $(OBJ_DIR)
-	@echo "${GREEN}Object directory $(OBJ_DIR) created.${NC}"
+$(OBJDIR)/%.o: %.cpp
+	mkdir -p $(@D)
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) $(INCLUDEFLAGS) -c $< -o $@
+$(NAME): $(OBJDIR) $(OBJS)
+	$(CC) $(CPPFLAGS) $(OBJS) -o $@
 
-${NAME}: $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	@echo "${GREEN}$(NAME) created.${NC}"
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
 clean:
-	@rm -rf $(OBJ_DIR)
+	rm -fr $(OBJDIR)
 
-fclean:
-	@rm -rf $(OBJ_DIR)
-	@rm -f $(NAME)
-	@echo "${GREEN}$(NAME) cleaned.${NC}"
+fclean: clean
+	rm -fr $(NAME)
 
 re: fclean all
-	@echo "${GREEN}Target 're' completed.${NC}"
 
-libs:
-	@echo "${YELLOW}Updating submodules...${NC}"
-	@git submodule update --init --recursive --remote
-	@echo "${GREEN}Submodules updated.${NC}"
-
-.PHONY: all clean fclean re libs
+.PHONY: all clean fclean re
